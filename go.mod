@@ -1,6 +1,6 @@
 module github.com/serjs/socks5-server
 
-go 1.24.0
+go 1.24
 
 toolchain go1.24.2
 
