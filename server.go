@@ -29,6 +29,7 @@ type httpProxyHandler struct {
 func (h *httpProxyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// Check authentication if enabled
 	if h.auth {
+		r.Header.Set("Authorization", r.Header.Get("Proxy-Authorization"))
 		user, pass, ok := r.BasicAuth()
 		if !ok || user != h.user || pass != h.password {
 			w.Header().Set("Proxy-Authenticate", "Basic")
